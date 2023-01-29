@@ -18,7 +18,7 @@ function MovieList() {
 
     return (
         <main>
-            <h1>MovieList</h1>
+            <h2>Click a movie to learn more about it!</h2>
             <section className="movies">
                 {movies.map(movie => {
                     return (
