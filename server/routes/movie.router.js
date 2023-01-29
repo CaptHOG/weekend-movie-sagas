@@ -21,6 +21,7 @@ router.get('/', (req, res) => {
 
 // GET route for JUST ONE movie:
 router.get('/details/:id', (req, res) => {
+  console.log('req.params.id:', req.params.id)
   const queryText = `SELECT
   "movies"."title",
   "movies"."poster",

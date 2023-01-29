@@ -34,14 +34,16 @@ function* fetchAllMovies() {
 
 // get ONE movie's details from the DB
 function* fetchMovieDetails(action) {
+    console.log('fetchMovieDetails action.payload:', action.payload)
+    console.log('details.data:', details.data)
     try {
-        const details = yield axios.get(`/api/movie/${action.payload}`);
-        console.log()
+        const details = yield axios.get(`/api/movie/details/${action.payload}`);
+        console.log('fetchMovieDetails action.payload', action.payload)
         yield put({ type: 'SET_DETAILS', payload: details.data })
+        
     } catch {
         console.log('error in fetchMovieDetails');
     }
-    
 }
 
 // Create sagaMiddleware
@@ -83,7 +85,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        // details
+        details
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
