@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import './MovieList.css'
 
+
 function MovieList() {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -12,8 +13,9 @@ function MovieList() {
         dispatch({ type: 'SAGA/FETCH_MOVIES' });
     }, []);
 
-    const handleDetailsView = () => {
-        history.push('/details')
+    // "id" will be the specific movie.id to grab
+    const handleDetailsView = (id) => {
+        history.push(`/details/:${id}`);
     }
 
     return (
@@ -24,7 +26,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title} onClick={handleDetailsView}/>
+                            <img src={movie.poster} alt={movie.title} onClick={() => handleDetailsView(movie.id)}/>
                         </div>
                     );
                 })}
@@ -33,5 +35,6 @@ function MovieList() {
 
     );
 }
+
 
 export default MovieList;

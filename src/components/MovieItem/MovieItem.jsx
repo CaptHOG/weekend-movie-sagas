@@ -1,13 +1,14 @@
 import { useHistory } from "react-router-dom";
 
 
-function MovieDetails() {
+function MovieItem() {
 
   const history = useHistory();
 
   const handleMovieListView = () => {
+    
     history.push('/')
-  }
+  };
 
   return (
     <>
@@ -17,4 +18,4 @@ function MovieDetails() {
 }
 
 
-export default MovieDetails;
+export default MovieItem;
